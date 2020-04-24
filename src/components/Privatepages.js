@@ -43,10 +43,10 @@ export class Privatepages extends Component {
         return (
         <Router>
         <ul>
-        <li>
+        <li className="btn btn-outline-primary">
             <Link to="/home">Home</Link>
         </li>
-        <li>
+        <li className="btn btn-outline-primary">
             <Link to="/about">About</Link>
         </li>
     </ul>
@@ -68,13 +68,13 @@ export class Privatepages extends Component {
 
                <div>
                     <ul>
-                        <li>
+                        <li className="btn btn-outline-primary">
                             <Link to={`${url}/another`}>Anothers JS Page</Link>
                         </li>
-                        <li>
+                        <li className="btn btn-outline-primary">
                             <Link to={`${url}/text`}>Text post Page</Link>
                         </li>
-                        <li>
+                        <li className="btn btn-outline-primary">
                             <Link to={`${url}/public`}>Public page</Link>
                         </li>
                     </ul>
@@ -83,18 +83,15 @@ export class Privatepages extends Component {
                             <h1>Click the link below!</h1>
                         </Route>
                        
-                        <Route path={`${path}/another`}>
-                        <Another/>
-                        </Route>
-                        <Route path={`${path}/text`}>
-                        <Textpost/>
-                        </Route>
-                        <Route path={`${path}/public`}>
-                        <Public/>
-                        </Route>
-                        <Route path={`${path}/:ids`}><Topics/>
+        <Route path={`${path}/another`} children={<Another/>}/>
+                        
+        <Route path={`${path}/text`} children={<Textpost/>}/>
+                        
+                        <Route path={`${path}/public`} children={<Public/>}/>
+                        
+                        <Route path={`${path}/:ids`} children={<Topics/>}/>
                      
-                     </Route>
+                     
                     </Switch>
                     </div>
                 </Router>

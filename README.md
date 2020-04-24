@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -71,3 +72,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 # twitterkg
 Data posting website with small profile
 >>>>>>> 42066de2b5e528502fa34e88a2170ba8549fd09e
+=======
+# twitterkg
+Data post application
+>>>>>>> 9fd79a1acf869577c5c746cfee179557cd42c718

@@ -7,16 +7,18 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <div className="jumbotron text-center">
     <h1>Hello World! la la la</h1>
-
+</div>
+<div className="container">
     <Router>
     <SignoutButton/>
       <h1>This is Menu. Click the link! </h1>
-      <ul>
-      <li>
+      <ul className="text-center col-sm-12">
+      <li className="btn btn-outline-primary">
         <Link to="/public">Public Page</Link>
       </li>
-      <li>
+      <li className="btn btn-outline-primary">
         <Link to="/privates">Private Page</Link>
       </li>
       </ul>
@@ -26,6 +28,7 @@ function App() {
         <PrivateRoute path="/privates"><PrivatePages/></PrivateRoute>
       </Switch>
     </Router>
+    </div>
     </div>
   );
 }
@@ -77,12 +80,15 @@ function Loginpage(){
   isAuthontication.signin(()=>{
     history.replace(from);
     });
-};
+  }
+ 
+
 return (
   <div>
     <p>You must log in to view the page {from.pathname}</p>
     
     <button onClick={login}>Log in</button>
+    
   </div>
 );
 }
