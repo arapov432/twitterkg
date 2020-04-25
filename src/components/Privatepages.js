@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Link, Route,
     Switch, useParams, useRouteMatch } from 'react-router-dom';
 import Textpost from './Textpost';
 import Public from './Public';
+import NestedLin from './NestedLin';
+import Nomatch404 from './Nomatch404';
 
 export class Privatepages extends Component {
     constructor(props) {
@@ -49,12 +51,20 @@ export class Privatepages extends Component {
         <li className="btn btn-outline-primary">
             <Link to="/about">About</Link>
         </li>
+        <li className="btn btn-outline-primary">
+            <Link to="/nests">Nested Links</Link>
+        </li>
+        <li className="btn btn-outline-primary">
+            <Link to="/nomatch">No Match Links</Link>
+        </li>
     </ul>
     <Switch>
         <Route exact path="/home">
             <h1>Select the link</h1>
         </Route>
         <Route path="/about"><About/></Route>
+        <Route path="/nests" children={<NestedLin/>}/>
+        <Route path="/nomatch" children={<Nomatch404/>}/>
     </Switch>
 </Router>    )
 }

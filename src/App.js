@@ -18,7 +18,7 @@ function App() {
       <li className="btn btn-outline-primary">
         <Link to="/public">Public Page</Link>
       </li>
-      <li className="btn btn-outline-primary">
+      <li className="btn btn-outline-primary" target="_blank">
         <Link to="/privates">Private Page</Link>
       </li>
       </ul>
@@ -87,7 +87,7 @@ return (
   <div>
     <p>You must log in to view the page {from.pathname}</p>
     
-    <button onClick={login}>Log in</button>
+    <button className="btn btn-outline-primary" onClick={login}>Log in</button>
     
   </div>
 );
