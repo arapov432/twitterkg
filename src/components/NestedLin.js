@@ -10,15 +10,15 @@ export const NestedLin =()=>{
             <div>
                 <Router>
                     <div>
-                        <ul>
+                        <ul className="btn btn-group-vertical">
                         <h1>Select one of the topics</h1>
-                            <li>
+                            <li className="btn btn-outline-primary">
                                 <Link to={`${url}/texts`}>Text Post </Link>
                             </li>
-                            <li>
+                            <li className="btn btn-outline-primary">
                                 <Link to={`${url}/another`}>Another Page</Link>
                             </li>
-                            <li>
+                            <li className="btn btn-outline-primary">
                                 <Link to={`${url}/sidebar`}>Side Bar Page</Link>
                             </li>
                         </ul>
@@ -34,10 +34,5 @@ export const NestedLin =()=>{
         )
     
 }
-//const Textpost=()=>{
-  //  return <h1>This is Text Post la <Textpost/></h1>
-//}
-//const Another=()=>{
-  //  return <h1>This is Another la <Another/></h1>
-//}
+
 export default NestedLin

@@ -4,9 +4,10 @@ import {BrowserRouter as Router, Link, Route,
     Switch, useParams, useRouteMatch } from 'react-router-dom';
 import Textpost from './Textpost';
 import Public from './Public';
-import NestedLin from './NestedLin';
-import Nomatch404 from './Nomatch404';
 
+import Nomatch404 from './Nomatch404';
+import Sidebar from './Sidebar';
+import pp from './pp.jpeg'
 export class Privatepages extends Component {
     constructor(props) {
         super(props)
@@ -25,9 +26,22 @@ export class Privatepages extends Component {
     }
     render() {
         return (
-            <div>
-    <Home/>
-    <h1>This is Private pages </h1>
+           
+               <div className="container">
+                   <div className="row">
+            <div className="col-sm-4">
+            <div className="card">
+                <img src={pp} className="card-img-top" alt="Cardimage" />
+                <div className="card-body">
+                    <h4 className="card-title">Azamat Arapov</h4>
+                    <p className="card-text">Some example like lorem ipsum</p>
+                    <Link to="#" className="btn btn-primary">See Profile</Link>
+                </div>
+                </div>
+                </div> 
+                <div className="col-sm-8">
+                <Home/>
+          <h1>This is Private pages </h1>
                 <form>
                     <h1>Hello, Welcome to JS! </h1><h1>{this.state.firstName} </h1>
                     <h1>Your username is: {this.state.username}</h1>
@@ -37,36 +51,46 @@ export class Privatepages extends Component {
                     <input type="text" name="username" onChange={this.myChangehandler}></input>
                 
                 </form>
+                </div>
+                </div>
             </div>
         )
     }
 }
   const  Home =()=>{
         return (
+           
         <Router>
-        <ul>
-        <li className="btn btn-outline-primary">
-            <Link to="/home">Home</Link>
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul className="navbar-nav">
+        <li className="nav-item active">
+            <Link to="/home" className="nav-link">Home</Link>
         </li>
-        <li className="btn btn-outline-primary">
-            <Link to="/about">About</Link>
+        <li className="nav-item">
+            <Link to="/about" className="nav-link">About</Link>
         </li>
-        <li className="btn btn-outline-primary">
-            <Link to="/nests">Nested Links</Link>
+        <li className="nav-item">
+            <Link to="/nests" className="nav-link">Text Post</Link>
         </li>
-        <li className="btn btn-outline-primary">
-            <Link to="/nomatch">No Match Links</Link>
+        <li className="nav-item">
+            <Link to="/nomatch" className="nav-link">No Match Links</Link>
+        </li>
+        <li className="nav-item">
+            <Link to="/sidebar" className="nav-link"> Side bar Links</Link>
         </li>
     </ul>
+    </nav>
     <Switch>
         <Route exact path="/home">
             <h1>Select the link</h1>
         </Route>
         <Route path="/about"><About/></Route>
-        <Route path="/nests" children={<NestedLin/>}/>
+        <Route path="/nests" children={<Textpost/>}/>
         <Route path="/nomatch" children={<Nomatch404/>}/>
+        <Route path="/sidebar" children={<Sidebar/>}/>
     </Switch>
-</Router>    )
+</Router>    
+        )
 }
  const  About=()=>{
         let {url, path}= useRouteMatch();

@@ -3,9 +3,49 @@ import {BrowserRouter as Router, Link, Switch, Route, Redirect, useLocation } fr
 import Public from './Public'
 
 export class Nomatch404 extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             Lastname: '',
+             age: null
+        }
+    }
+    mySubmit=(event)=>{
+        event.preventDefault();
+        let age =this.state.age;
+        if(!Number(age)){
+            alert("You have to enter numbers! ");
+        }
+    }
+    myChangess=(event)=>{
+        let nam = event.target.name;
+        let val = event.target.value;
+      //  if(nam == "age"){
+        //    if(!Number(val))
+          //  {
+            //    alert("You have to enter numbers! ");
+            //}
+        //}
+        this.setState({[nam] : val});
+    }
     render() {
+        let names;
+        if(this.state.Lastname){
+        names=<p>Welcome Mr/Mrs. {this.state.Lastname} .Your age is {this.state.age}</p>
+        }
+        else{
+            names="";
+        }
         return (
             <div>
+                <form onSubmit={this.mySubmit}>
+                    {names}
+                    <p>Enter your Last name: </p>
+                    <input type="text" onChange={this.myChangess} name="Lastname"/>
+                    <input type="text" onChange={this.myChangess} name="age"/>
+                 <input type="submit" />
+                </form>
                 <Router>
                     <ul>
                         <li>
@@ -35,6 +75,7 @@ export class Nomatch404 extends Component {
         )
     }
 }
+
 function WillMatch(){
     return <h1>Will Match</h1>
 }

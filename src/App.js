@@ -3,33 +3,49 @@ import Public from './components/Public';
 import PrivatePages from './components/Privatepages';
 import {BrowserRouter as Router, Route, Link, Switch, useHistory, Redirect, useLocation} from 'react-router-dom';
 import './App.css';
+import NestedLin from './components/NestedLin';
+import Another from './components/Another';
+import Registeration from './components/Registeration';
 
 function App() {
   return (
     <div className="App">
       <div className="jumbotron text-center">
-    <h1>Hello World! la la la</h1>
-</div>
-<div className="container">
+      <h1>Hello World! la la la</h1>
+      <h4>This is Menu. Click the link! </h4>
+     </div>
     <Router>
-    <SignoutButton/>
-      <h1>This is Menu. Click the link! </h1>
-      <ul className="text-center col-sm-12">
-      <li className="btn btn-outline-primary">
-        <Link to="/public">Public Page</Link>
+    <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
+      <ul className="navbar-nav">
+      <li className="nav-item active">
+        <Link to="/public" className="nav-link">Home</Link>
       </li>
-      <li className="btn btn-outline-primary" target="_blank">
-        <Link to="/privates">Private Page</Link>
+      <li className="nav-item">
+        <Link to="/privates" className="nav-link">Dashboard</Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/services" className="nav-link">Services</Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/aboutus" className="nav-link">About Us</Link>
       </li>
       </ul>
+      </nav> 
+   
       <Switch>
         <Route path="/public"><Public/></Route>
-        <Route path="/login"><Loginpage/></Route>
+        <Route path="/login" children={<Loginpage/>}/>
         <PrivateRoute path="/privates"><PrivatePages/></PrivateRoute>
+        <Route path="/services" children={<NestedLin/>}/>
+        <Route path="/aboutus" children={<Another/>}/>
       </Switch>
+   
+      <SignoutButton/> 
     </Router>
+    
     </div>
-    </div>
+   
+
   );
 }
 const isAuthontication = {
@@ -43,17 +59,7 @@ const isAuthontication = {
     setTimeout(ab, 100);
   }
 };
-function SignoutButton(){
-  let history = useHistory();
-  return isAuthontication.isAuthon ?(
-    <p>Welcome! {" "}
-    <button onClick={()=>{isAuthontication.signout(()=>history.push("/"));
-    }}>Sign out</button>
-    </p>
-  ):(
-    <p>You have to sign in first!</p>
-  )
-}
+
 function PrivateRoute({children, ...rest}){
   return (
   <Route
@@ -81,16 +87,26 @@ function Loginpage(){
     history.replace(from);
     });
   }
- 
-
+   
 return (
   <div>
     <p>You must log in to view the page {from.pathname}</p>
     
     <button className="btn btn-outline-primary" onClick={login}>Log in</button>
-    
+    <button className="btn btn-outline-primary" onClick={()=><Registeration/>
+  }>Sign up</button>
   </div>
 );
 }
-
+function SignoutButton(){
+  let history = useHistory();
+  return isAuthontication.isAuthon ?(
+    <p>Welcome! {" "}
+    <button onClick={()=>{isAuthontication.signout(()=>history.push("/"));
+    }}>Sign out</button>
+    </p>
+  ):(
+    <p>You have to sign in first!</p>
+  )
+}
 export default App;
