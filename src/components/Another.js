@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export class Another extends Component {
 
           constructor(props) {
@@ -60,6 +59,7 @@ render(){
         <div className="container">
         <h1>Another Javascript pages</h1>
         
+       
         <form onSubmit={this.myChangehandler} method="post">
         <h2>Hello Mr/Mrs {this.state.users}</h2>
         <h2>Your age is : {this.state.age}</h2>

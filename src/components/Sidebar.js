@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Switch, NavLink, Link } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Another from './Another'
 import NestedLin from './NestedLin'
 import Nomatch404 from './Nomatch404'
@@ -8,7 +8,7 @@ const routes=[
     {
         path: "/",
         exact: true,
-        sidebar: ()=><div><h1>Home Page is here on sidebar</h1><Another/></div>,
+        sidebar: ()=><div><h1>Home Page is here on sidebar</h1></div>,
         main: ()=><div><Another/></div>
     },
     {
@@ -66,4 +66,3 @@ export default function Sidebar() {
         </div>
     )
 }
-//export default Sidebar

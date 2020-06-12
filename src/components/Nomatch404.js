@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Link, Switch, Route, Redirect, useLocation } from 'react-router-dom'
-import Public from './Public'
+
 
 export class Nomatch404 extends Component {
     constructor(props) {
@@ -65,7 +65,7 @@ export class Nomatch404 extends Component {
                         </li>
                     </ul>
                     <Switch>
-                        <Route exact path="/"><Public/></Route>
+                       
                     <Route path="/will-match"><WillMatch/></Route>
                         <Route path="/old-match"><Redirect to="/will-match"></Redirect></Route>
                     <Route path="*"><NoMatch/></Route>

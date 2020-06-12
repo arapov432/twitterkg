@@ -1,25 +1,24 @@
 import React from 'react';
-import Public from './components/Public';
+
 import PrivatePages from './components/Privatepages';
 import {BrowserRouter as Router, Route, Link, Switch, useHistory, Redirect, useLocation} from 'react-router-dom';
-import './App.css';
+
 import NestedLin from './components/NestedLin';
 import Another from './components/Another';
 import Registeration from './components/Registeration';
+import Todolist from './components/todolist';
 
 function App() {
   return (
     <div className="App">
-      <div className="jumbotron text-center">
+      <div className="jumbotron text-center m-0 p-2">
       <h1>Hello World! la la la</h1>
       <h4>This is Menu. Click the link! </h4>
      </div>
     <Router>
     <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
       <ul className="navbar-nav">
-      <li className="nav-item active">
-        <Link to="/public" className="nav-link">Home</Link>
-      </li>
+     
       <li className="nav-item">
         <Link to="/privates" className="nav-link">Dashboard</Link>
       </li>
@@ -29,15 +28,18 @@ function App() {
       <li className="nav-item">
         <Link to="/aboutus" className="nav-link">About Us</Link>
       </li>
+      <li className="nav-item">
+        <Link to="/todolist" className="nav-link">Todo List</Link>
+      </li>
       </ul>
       </nav> 
-   
-      <Switch>
-        <Route path="/public"><Public/></Route>
+        <Switch>
+        
         <Route path="/login" children={<Loginpage/>}/>
         <PrivateRoute path="/privates"><PrivatePages/></PrivateRoute>
         <Route path="/services" children={<NestedLin/>}/>
         <Route path="/aboutus" children={<Another/>}/>
+        <Route path="/todolist" children={<Todolist/>}/>
       </Switch>
    
       <SignoutButton/> 
@@ -87,14 +89,16 @@ function Loginpage(){
     history.replace(from);
     });
   }
+  let register=()=>{
+    return (<Registeration/>);
+  }
    
 return (
   <div>
     <p>You must log in to view the page {from.pathname}</p>
     
     <button className="btn btn-outline-primary" onClick={login}>Log in</button>
-    <button className="btn btn-outline-primary" onClick={()=><Registeration/>
-  }>Sign up</button>
+    <button className="btn btn-outline-primary" onClick={register}>Sign up</button>
   </div>
 );
 }
